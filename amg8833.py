@@ -36,6 +36,7 @@ while True:
     ax2.clear()
     grid_0 = grid_0[grid_0 > 65.0]
     grid_0 = human_f[grid_0 < 80.0]
-    hist = ax2.hist(grid_0, bins = 2)
+    if len(grid_0) > 0: 
+        hist = ax2.hist(grid_0, bins = 2)
     #hist.set_data(grid_0)
     fig.canvas.draw()
