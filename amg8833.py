@@ -27,7 +27,7 @@ while True:
     pixels = np.asarray(amg.pixels).flatten()
     pixels = (9/5)*pixels+32
     grid_0 = griddata(points, pixels, (grid_x, grid_y), method='cubic')
-    pixels = np.rot90(pixels, k=1, axes=(0, 1))
+    pixels = np.rot90(pixels)
     pixels_f = (9/5)*pixels+32
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax(pixels_f )))
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
