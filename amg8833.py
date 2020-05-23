@@ -43,7 +43,7 @@ while True:
         bin_width = bin_edges[0] - bin_edges[1]
         peaks, _ = find_peaks(hist, height=0)
         bar = ax2.bar(bin_edges[:-1], hist, width = 0.5, color='#0504aa',alpha=0.7)
-        for temp in bin_edges[peaks]:
-            print(temp + bin_width / 2)
+        max_peak = np.amax(bin_edges[peaks]) + bin_width / 2
+        print("Max Peak: {0:.4f}".format(max_peak))
         
     fig.canvas.draw()
