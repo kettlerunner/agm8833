@@ -16,16 +16,16 @@ amg = adafruit_amg88xx.AMG88XX(i2c)
 fig = plt.figure(num='AMG8833 Thermal Scanner');
 fig = plt.figure()
 
-ax = fig.add_subplot(111)
+ax = fig.add_subplot(121)
 ax.set_yticklabels([])
 ax.set_xticklabels([])
 im = ax.imshow(amg.pixels, cmap='jet', vmin=vmin, vmax=vmax)
 fig.colorbar(im, ax=ax)
 points = [(math.floor(ix / 8), (ix % 8)) for ix in range(0,64)]
-grid_x, grid_y = np.mgrid[0:7:512j, 0:7:512j]
+grid_x, grid_y = np.mgrid[0:7:256j, 0:7:256j]
 
 ax2 = fig.add_subplot(122)
-hist = ax2.hist(amg.pixels, bins = int(180/5))
+hist = ax2.hist(amg.pixels, bins = 2)
 
 while True:
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax((9/5)*np.amax(amg.pixels)+32)))
