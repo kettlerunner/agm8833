@@ -23,8 +23,8 @@ points = [(math.floor(ix / 8), (ix % 8)) for ix in range(0,64)]
 grid_x, grid_y = np.mgrid[0:7:512j, 0:7:512j]
 
 while True:
-    pixels = np.asarray(amg.pixels)
-    pixels = np.rot90(pixels, k=1, axes=(0, 1)).flatten()
+    pixels = np.rot90(amg.pixels, k=1, axes=(0, 1))
+    pixels = np.asarray(pixels).flatten()
     pixels_f = (9/5)*pixels+32
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax(pixels_f ))
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
