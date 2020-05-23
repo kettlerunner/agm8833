@@ -27,7 +27,7 @@ grid_x, grid_y = np.mgrid[0:7:256j, 0:7:256j]
 ax2 = fig.add_subplot(122)
 
 while True:
-    plt.clf()
+    fig.clear()
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax((9/5)*np.amax(amg.pixels)+32)))
     pixels = np.fliplr(np.rot90(np.asarray(amg.pixels), k=3)).flatten()
     pixels_f = (9/5)*pixels+32
