@@ -35,9 +35,9 @@ while True:
     im.set_data(grid_0)
     ax2.clear()
     flat_grid = grid_0.flatten()
-    human_flat_grid = human_flat_grid[human_flat_grid > 70.0]
+    human_flat_grid = human_flat_grid[flat_grid > 70.0]
     human_flat_grid = human_flat_grid[human_flat_grid < 85.0]
-    room_flat_grid = room_flat_grid[room_flat_grid > 45.0]
+    room_flat_grid = room_flat_grid[flat_grid > 50.0]
     room_flat_grid = room_flat_grid[room_flat_grid < 72.0]
     if len(room_flat_grid) > 0:
         hist, bin_edges = np.histogram(room_flat_grid, bins=256)
