@@ -61,7 +61,7 @@ while True:
                 body_temp_array = []
             else:
                 if np.std(body_temp_array) > 0.05:
-                    body_temp_array = body_temp_aray[1:0]
+                    body_temp_array = body_temp_array[1:0]
             human_temp = np.amax(bin_edges[peaks]) + bin_width / 2
             body_temp_array.append(human_temp)
             collecting_body_temps = True
