@@ -44,12 +44,12 @@ while True:
     if len(room_flat_grid) > 0:
         hist, bin_edges = np.histogram(room_flat_grid, bins=256)
         bin_width = bin_edges[0] - bin_edges[1]
-        peaks, _ = find_peaks(hist, height=150)
+        peaks, _ = find_peaks(hist, height=1000)
         room_temp = np.amax(bin_edges[peaks]) + bin_width / 2
         print("Room Temp: {0:.4f}".format(room_temp))
         
     if len(human_flat_grid) > 0:
-        hist, bin_edges = np.histogram(flat_grid, bins=256)
+        hist, bin_edges = np.histogram(human_flat_grid, bins=256)
         bin_width = bin_edges[0] - bin_edges[1]
         peaks, _ = find_peaks(hist, height=400)
         human_temp = np.amax(bin_edges[peaks]) + bin_width / 2
