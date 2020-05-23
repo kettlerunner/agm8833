@@ -35,6 +35,8 @@ while True:
     im.set_data(grid_0)
     ax2.clear()
     flat_grid = grid_0.flatten()
+    hist, bin_edges = np.histogram(flat_grid, bins=256)
+    bar = ax2.bar(bin_edges[:-1], hist, width = 0.01, color='#0504aa',alpha=0.7)
     human_flat_grid = flat_grid[flat_grid > 70.0]
     human_flat_grid = human_flat_grid[human_flat_grid < 85.0]
     room_flat_grid = flat_grid[flat_grid > 50.0]
@@ -43,7 +45,6 @@ while True:
         hist, bin_edges = np.histogram(room_flat_grid, bins=256)
         bin_width = bin_edges[0] - bin_edges[1]
         peaks, _ = find_peaks(hist, height=150)
-        bar = ax2.bar(bin_edges[:-1], hist, width = 0.01, color='#0504aa',alpha=0.7)
         room_temp = np.amax(bin_edges[peaks]) + bin_width / 2
         print("Room Temp: {0:.4f}".format(room_temp))
         
