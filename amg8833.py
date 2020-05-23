@@ -16,7 +16,7 @@ amg = adafruit_amg88xx.AMG88XX(i2c)
 fig = plt.figure(num='AMG8833 Thermal Scanner');
 fig = plt.figure()
 
-ax = fig.add_subplot(222)
+ax = fig.add_subplot(111)
 ax.set_yticklabels([])
 ax.set_xticklabels([])
 im = ax.imshow(amg.pixels, cmap='jet', vmin=vmin, vmax=vmax)
