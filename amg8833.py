@@ -44,7 +44,7 @@ while True:
         hist, bin_edges = np.histogram(flat_grid, bins=512)
         bin_width = bin_edges[0] - bin_edges[1]
         peaks, _ = find_peaks(hist, height=0)
-        bar = ax2.bar(bin_edges[:-1], hist, width = 0.1, color='#0504aa',alpha=0.7)
+        bar = ax2.bar(bin_edges[:-1], hist, width = 0.01, color='#0504aa',alpha=0.7)
         max_peak = np.amax(bin_edges[peaks]) + bin_width / 2
         print("Max Peak: {0:.4f}".format(max_peak))
         
