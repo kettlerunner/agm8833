@@ -24,7 +24,7 @@ fig.colorbar(im, ax=ax)
 points = [(math.floor(ix / 8), (ix % 8)) for ix in range(0,64)]
 grid_x, grid_y = np.mgrid[0:7:512j, 0:7:512j]
 
-ax2 = fig.add_subplot(222)
+ax2 = fig.add_subplot(122)
 hist = ax2.hist(amg.pixels, bins = int(180/5))
 
 while True:
