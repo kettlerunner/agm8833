@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import griddata
 
 vmax = 80
-vmin = 70
+vmin = 63
 plt.ion()
 i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
