@@ -27,13 +27,13 @@ grid_x, grid_y = np.mgrid[0:7:256j, 0:7:256j]
 ax2 = fig.add_subplot(122)
 
 while True:
-    fig.clear()
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax((9/5)*np.amax(amg.pixels)+32)))
     pixels = np.fliplr(np.rot90(np.asarray(amg.pixels), k=3)).flatten()
     pixels_f = (9/5)*pixels+32
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax(pixels_f )))
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
     im.set_data(grid_0)
+    ax2.clear()
     hist = ax2.hist(amg.pixels, bins = 2)
     #hist.set_data(grid_0)
     fig.canvas.draw()
