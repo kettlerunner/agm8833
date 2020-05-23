@@ -65,6 +65,6 @@ while True:
             human_temp = np.amax(bin_edges[peaks]) + bin_width / 2
             body_temp_array.append(human_temp)
             collecting_body_temps = True
-            print("Human Temp: {0:.1f} - alpha: {1:.4f} - len() - {3}".format(np.average(human_temp), np.std(body_temp_array), len(body_temp_array)))
+            print("Human Temp: {0:.1f} - alpha: {1:.4f} - len() - {2}".format(np.average(human_temp), np.std(body_temp_array), len(body_temp_array)))
      
     fig.canvas.draw()
