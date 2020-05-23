@@ -55,7 +55,7 @@ while True:
     if len(human_flat_grid) > 0:
         hist, bin_edges = np.histogram(human_flat_grid, bins=256)
         bin_width = bin_edges[0] - bin_edges[1]
-        peaks, _ = find_peaks(hist, height=150)
+        peaks, _ = find_peaks(hist, height=120)
         if len(peaks) > 0:
             if not collecting_body_temps:
                 body_temp_array = []
