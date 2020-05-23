@@ -34,6 +34,6 @@ while True:
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
     im.set_data(grid_0)
     ax2.clear()
-    hist = ax2.hist(amg.pixels, bins = 2)
+    hist = ax2.hist(grid_0, bins = 2)
     #hist.set_data(grid_0)
     fig.canvas.draw()
