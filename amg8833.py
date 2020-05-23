@@ -34,8 +34,8 @@ while True:
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
     im.set_data(grid_0)
     ax2.clear()
-    grid_0 = grid_0[grid_0 > 65.0]
-    grid_0 = grid_0[grid_0 < 80.0]
+    #grid_0 = grid_0[grid_0 > 65.0]
+    #grid_0 = grid_0[grid_0 < 80.0]
     if len(grid_0) > 0: 
         hist = ax2.hist(grid_0, bins = 2)
     #hist.set_data(grid_0)
