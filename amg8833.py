@@ -40,7 +40,7 @@ while True:
     if len(grid_0) > 0: 
         peaks, _ = find_peaks(flat_grid, height=0)
         #plot = ax2.plot(peaks, flat_grid[peaks], "x")
-        hist = ax2.hist(flat_grid, bins = 2)
+        hist = ax2.hist(flat_grid, bins = 20)
         print(peaks)
         
     fig.canvas.draw()
