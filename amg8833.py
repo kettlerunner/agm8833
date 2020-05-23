@@ -7,6 +7,7 @@ import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import griddata
+from scipy.signal import find_peaks
 
 vmax = 80
 vmin = 63
@@ -14,7 +15,6 @@ plt.ion()
 i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
 fig = plt.figure(num='AMG8833 Thermal Scanner');
-fig = plt.figure()
 
 ax = fig.add_subplot(121)
 ax.set_yticklabels([])
@@ -37,6 +37,7 @@ while True:
     #grid_0 = grid_0[grid_0 > 65.0]
     #grid_0 = grid_0[grid_0 < 80.0]
     if len(grid_0) > 0: 
+        peaks, _ = find_peaks(grid_0, height=0)
         hist = ax2.hist(grid_0, bins = 2)
-    #hist.set_data(grid_0)
+        plot = ax2.plot(peaks, grid_0[peaks], "x")
     fig.canvas.draw()
