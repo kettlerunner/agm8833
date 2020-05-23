@@ -40,7 +40,7 @@ while True:
     if len(grid_0) > 0: 
         peaks, _ = find_peaks(flat_grid, height=0)
         #plot = ax2.plot(peaks, flat_grid[peaks], "x")
-        hist, bin_edges = np.histogram(flat_grid)
+        hist, bin_edges = np.histogram(flat_grid, bins=20)
         bar = ax2.bar(bin_edges[:-1], hist, width = 0.5, color='#0504aa',alpha=0.7)
         print(hist)
         
