@@ -25,9 +25,7 @@ grid_x, grid_y = np.mgrid[0:7:512j, 0:7:512j]
 while True:
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax((9/5)*np.amax(amg.pixels)+32)))
     pixels = np.rot90(np.asarray(amg.pixels)).flatten()
-    pixels = (9/5)*pixels+32
     pixels_f = (9/5)*pixels+32
-    grid_0 = griddata(points, pixelsf, (grid_x, grid_y), method='cubic')
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax(pixels_f )))
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
     im.set_data(grid_0)
