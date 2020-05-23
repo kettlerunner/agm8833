@@ -33,6 +33,7 @@ while True:
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax(pixels_f )))
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
     im.set_data(grid_0)
+    ax2.clf()
     hist = ax2.hist(amg.pixels, bins = 2)
     #hist.set_data(grid_0)
     fig.canvas.draw()
