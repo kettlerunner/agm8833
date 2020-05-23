@@ -42,7 +42,6 @@ while True:
         #plot = ax2.plot(peaks, flat_grid[peaks], "x")
         hist, bin_edges = np.histogram(flat_grid)
         bar = ax2.bar(bin_edges[:-1], hist, width = 0.5, color='#0504aa',alpha=0.7)
-        ax2.xlim(60,80)
         print(hist)
         
     fig.canvas.draw()
