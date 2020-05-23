@@ -34,10 +34,8 @@ while True:
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
     im.set_data(grid_0)
     ax2.clear()
-    #grid_0 = grid_0[grid_0 > 65.0]
-    #grid_0 = grid_0[grid_0 < 80.0]
     flat_grid = grid_0.flatten()
-    flat_grid = flat_grid[flat_grid > 79.0]
+    flat_grid = flat_grid[flat_grid > 70.0]
     flat_grid = flat_grid[flat_grid < 85.0]
     if len(grid_0) > 0: 
         #plot = ax2.plot(peaks, flat_grid[peaks], "x")
