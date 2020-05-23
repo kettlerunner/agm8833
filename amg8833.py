@@ -42,6 +42,7 @@ while True:
         hist, bin_edges = np.histogram(flat_grid, bins=20)
         peaks, _ = find_peaks(hist, height=0)
         bar = ax2.bar(bin_edges[:-1], hist, width = 0.5, color='#0504aa',alpha=0.7)
-        print(peaks)
+        for temp in bin_edges[peaks]:
+            print(temp)
         
     fig.canvas.draw()
