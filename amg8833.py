@@ -35,15 +35,22 @@ while True:
     im.set_data(grid_0)
     ax2.clear()
     flat_grid = grid_0.flatten()
-    flat_grid = flat_grid[flat_grid > 70.0]
-    flat_grid = flat_grid[flat_grid < 85.0]
-    if len(grid_0) > 0: 
-        #plot = ax2.plot(peaks, flat_grid[peaks], "x")
+    human_flat_grid = human_flat_grid[human_flat_grid > 70.0]
+    human_flat_grid = human_flat_grid[human_flat_grid < 85.0]
+    room_flat_grid = room_flat_grid[room_flat_grid > 45.0]
+    room_flat_grid = room_flat_grid[room_flat_grid < 72.0]
+    if len(room_flat_grid) > 0:
+        hist, bin_edges = np.histogram(room_flat_grid, bins=256)
+        bin_width = bin_edges[0] - bin_edges[1]
+        peaks, _ = find_peaks(hist, height=150)
+        bar = ax2.bar(bin_edges[:-1], hist, width = 0.01, color='#0504aa',alpha=0.7)
+        room_temp = np.amax(bin_edges[peaks]) + bin_width / 2
+        print("Room Temp: {0:.4f}".format(room_temp))
+        
+    if len(human_flat_grid) > 0:
         hist, bin_edges = np.histogram(flat_grid, bins=256)
         bin_width = bin_edges[0] - bin_edges[1]
-        peaks, _ = find_peaks(hist, height=0)
-        bar = ax2.bar(bin_edges[:-1], hist, width = 0.01, color='#0504aa',alpha=0.7)
-        max_peak = np.amax(bin_edges[peaks]) + bin_width / 2
-        print("Max Peak: {0:.4f}".format(max_peak))
-        
+        peaks, _ = find_peaks(hist, height=150)
+        human_temp = np.amax(bin_edges[peaks]) + bin_width / 2
+        print("Human Temp: {0:.4f}".format(human_temp))
     fig.canvas.draw()
