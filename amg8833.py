@@ -37,7 +37,7 @@ while True:
     #grid_0 = grid_0[grid_0 > 65.0]
     #grid_0 = grid_0[grid_0 < 80.0]
     flat_grid = grid_0.flatten()
-    flat_grid = flat_grid[flat_grid > 65.0]
+    flat_grid = flat_grid[flat_grid > 68.0]
     flat_grid = flat_grid[flat_grid < 80.0]
     if len(grid_0) > 0: 
         #plot = ax2.plot(peaks, flat_grid[peaks], "x")
