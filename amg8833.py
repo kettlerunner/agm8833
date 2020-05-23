@@ -51,7 +51,7 @@ while True:
     if len(human_flat_grid) > 0:
         hist, bin_edges = np.histogram(human_flat_grid, bins=256)
         bin_width = bin_edges[0] - bin_edges[1]
-        peaks, _ = find_peaks(hist, height=400)
+        peaks, _ = find_peaks(hist, height=200)
         human_temp = np.amax(bin_edges[peaks]) + bin_width / 2
         print("Human Temp: {0:.4f}".format(human_temp))
     fig.canvas.draw()
