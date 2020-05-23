@@ -25,7 +25,6 @@ points = [(math.floor(ix / 8), (ix % 8)) for ix in range(0,64)]
 grid_x, grid_y = np.mgrid[0:7:256j, 0:7:256j]
 
 ax2 = fig.add_subplot(122)
-hist = ax2.hist(amg.pixels, bins = 2)
 
 while True:
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax((9/5)*np.amax(amg.pixels)+32)))
@@ -34,6 +33,6 @@ while True:
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax(pixels_f )))
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
     im.set_data(grid_0)
-    hist = ax2.hist(amg.pixels, bins = int(180/5))
+    hist = ax2.hist(amg.pixels, bins = 2)
     #hist.set_data(grid_0)
     fig.canvas.draw()
