@@ -36,9 +36,10 @@ while True:
     ax2.clear()
     #grid_0 = grid_0[grid_0 > 65.0]
     #grid_0 = grid_0[grid_0 < 80.0]
+    flat_grid = grid_0.flatten()
     if len(grid_0) > 0: 
-        peaks, _ = find_peaks(grid_0.flatten(), height=0)
-        plot = ax2.plot(peaks, grid_0[peaks], "x")
-        hist = ax2.hist(grid_0.flatten(), bins = 2)
+        peaks, _ = find_peaks(flat_grid, height=0)
+        plot = ax2.plot(peaks, flat_grid[peaks], "x")
+        hist = ax2.hist(flat_grid, bins = 2)
         
     fig.canvas.draw()
