@@ -35,13 +35,3 @@ while True:
     im.set_data(grid_0)
     hist.set_data(grid_0)
     fig.canvas.draw()
-
-
-    
-    fig = plt.figure(num=None, figsize=(2, 2), dpi=72, facecolor='w', edgecolor='k')
-                    hist = plt.hist(temp_scan_f, color = 'blue', edgecolor = 'black', bins = int(180/5))
-                    plt.tight_layout()
-                    fig.canvas.draw()
-                    temp_hist = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
-                    temp_hist  = temp_hist.reshape(fig.canvas.get_width_height()[::-1] + (3,))
-                   
