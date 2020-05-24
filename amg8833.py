@@ -58,7 +58,7 @@ while True:
         peaks, _ = find_peaks(hist, height=150)
         if len(peaks) > 0:
             if collecting_body_temps:
-               if np.std(body_temp_array) > 0.25:
+               if np.std(body_temp_array) > 1.0:
                     body_temp_array = body_temp_array[1:0]
             human_temp = np.amax(bin_edges[peaks]) + bin_width / 2
             body_temp_array.append(human_temp)
