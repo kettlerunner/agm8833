@@ -55,16 +55,16 @@ while True:
     if len(human_flat_grid) > 0:
         hist, bin_edges = np.histogram(human_flat_grid, bins=256)
         bin_width = bin_edges[0] - bin_edges[1]
-        peaks, _ = find_peaks(hist, height=120)
+        peaks, _ = find_peaks(hist, height=150)
         if len(peaks) > 0:
-            if not collecting_body_temps:
-                body_temp_array = []
-            else:
-                if np.std(body_temp_array) > 0.05:
+            if collecting_body_temps:
+               if np.std(body_temp_array) > 0.1:
                     body_temp_array = body_temp_array[1:0]
             human_temp = np.amax(bin_edges[peaks]) + bin_width / 2
             body_temp_array.append(human_temp)
             collecting_body_temps = True
             print("Human Temp: {0:.1f} - alpha: {1:.4f} - len() - {2}".format(np.average(human_temp), np.std(body_temp_array), len(body_temp_array)))
-     
+     else:
+        collecting_body_temps = False
+        body_temp_array = []
     fig.canvas.draw()
