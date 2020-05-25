@@ -46,7 +46,7 @@ while True:
     human_flat_grid = human_flat_grid[human_flat_grid < 85.0]
     room_flat_grid = flat_grid[flat_grid > 50.0]
     room_flat_grid = room_flat_grid[room_flat_grid < 72.0]
-    if len(room_flat_grid) > 0:
+    if len(room_flat_grid) > 0 and not collecting_body_temps:
         hist, bin_edges = np.histogram(room_flat_grid, bins=256)
         bin_width = bin_edges[0] - bin_edges[1]
         peaks, _ = find_peaks(hist, height=150)
