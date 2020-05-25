@@ -77,6 +77,7 @@ while True:
         if len(faces) > 0 : #found a face in the frame 
             if not face_in_frame: #there was no face before but there is now
                 body_temp_array = []
+                face_in_frame = True
             if len(human_flat_grid) > 0:
                 hist, bin_edges = np.histogram(human_flat_grid, bins=256)
                 bin_width = bin_edges[0] - bin_edges[1]
@@ -95,6 +96,7 @@ while True:
         else:
             if face_in_frame: #There was a face in the previous frame. but not now.
                 x = 1 # we can send the twilio messages here.
+                face_in_frame = False
             hist, bin_edges = np.histogram(room_flat_grid, bins=256)
             bin_width = bin_edges[0] - bin_edges[1]
             peaks, _ = find_peaks(hist, height=150)
