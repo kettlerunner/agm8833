@@ -110,7 +110,7 @@ while True:
         ty = int(img.shape[0]/2 - 150)
         img = img[ty:ty+300, tx:tx+300]
     
-    cv2.imshow('therm', frame)
+    cv2.imshow('therm', img)
     #out.write(frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
