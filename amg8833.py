@@ -89,7 +89,7 @@ while True:
                 while len(peaks) != 1 or x == z:
                     z = y
                     y = x
-                    if len(peaks) > 3:
+                    if len(peaks) > 1:
                         peak_height_body = peak_height_body + 1
                     if len(peaks) == 0:
                         peak_height_body = peak_height_body - 1
