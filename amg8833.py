@@ -78,11 +78,10 @@ while True:
             if not face_in_frame: #there was no face before but there is now
                 body_temp_array = []
                 face_in_frame = True
-            print(len(human_flat_grid))
             if len(human_flat_grid) > 0:
                 hist, bin_edges = np.histogram(human_flat_grid, bins=256)
                 bin_width = bin_edges[0] - bin_edges[1]
-                peaks, _ = find_peaks(hist, height=150)
+                peaks, _ = find_peaks(hist, height=100)
                 if len(peaks) > 0:
                     if collecting_body_temps:
                        if np.std(body_temp_array) > 0.50:
