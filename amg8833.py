@@ -89,12 +89,12 @@ while True:
                 while len(peaks) != 1 or x == z:
                     z = y
                     y = x
-                    x = peak_height_body
                     if len(peaks) > 1:
                         peak_height_body = peak_height_body + 1
                     if len(peaks) == 0:
                         peak_height_body = peak_height_body - 1
                     peaks, _ = find_peaks(hist, height=peak_height_body)
+                    x = peak_height_body
                     print(peak_height_body)
                 if len(peaks) > 0:
                     if collecting_body_temps:
