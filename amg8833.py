@@ -74,11 +74,11 @@ while True:
             bx = tx + 300 
         img = img[ty:ty+300, tx:bx]
         faces = faces[np.argmax(face_sizes):np.argmax(face_sizes)+1]
-        print(len(faces))
         if len(faces) > 0 : #found a face in the frame 
             if not face_in_frame: #there was no face before but there is now
                 body_temp_array = []
                 face_in_frame = True
+            print(len(human_flat_grid))
             if len(human_flat_grid) > 0:
                 hist, bin_edges = np.histogram(human_flat_grid, bins=256)
                 bin_width = bin_edges[0] - bin_edges[1]
