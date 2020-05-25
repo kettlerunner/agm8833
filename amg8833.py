@@ -85,7 +85,7 @@ while True:
                 peaks, _ = find_peaks(hist, height=peak_height_body)
                 x = []
                 y = False
-                while len(peaks) != 1 or not y:
+                while len(peaks) != 1 and not y:
                     if len(peaks) > 1:
                         peak_height_body = peak_height_body + 1
                     if len(peaks) == 0:
