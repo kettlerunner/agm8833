@@ -15,7 +15,6 @@ plt.ion()
 collecting_body_temps = False
 body_temp_array = []
 room_temp_array = []
-collecting_room_temps = False
 body_temp = 98.6
 room_temp = 65.0
 i2c = busio.I2C(board.SCL, board.SDA)
@@ -52,9 +51,8 @@ while True:
         bin_width = bin_edges[0] - bin_edges[1]
         peaks, _ = find_peaks(hist, height=150)
         if len(peaks) > 0:
-            if collecting_room_temps:
-                if np.std(room_temp_array) >0.50 or len(room_temp_array) > 64:
-                    room_temp_array = room_temp_array[1:]
+            if np.std(room_temp_array) >0.50 or len(room_temp_array) > 64:
+                room_temp_array = room_temp_array[1:]
             room_temp = np.amax(bin_edges[peaks]) + bin_width / 2
             room_temp_array.append(room_temp)
             print("Room Temp: {0:.1f} - alpha: {1:.4f} - len() - {2}".format(np.average(room_temp_array), np.std(room_temp_array), len(room_temp_array)))
