@@ -94,7 +94,7 @@ while True:
                     if len(x) > 10:
                         x = x[1:]
                     x.append(peak_height_body)
-                    if np.std(x) < 0.5:
+                    if np.std(x) < 0.65:
                         y = True
                         peak_height_body = min(x)
                         print("breaking loop")
