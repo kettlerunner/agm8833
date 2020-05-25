@@ -95,6 +95,8 @@ while True:
                         peak_height_body = peak_height_body - 1
                     peaks, _ = find_peaks(hist, height=peak_height_body)
                     x = peak_height_body
+                    if x == z: #we are osolating in an infinite loop. break...
+                        peak_height_body = min(x,y)
                     print(peak_height_body)
                 if len(peaks) > 0:
                     if collecting_body_temps:
