@@ -53,7 +53,7 @@ while True:
         peaks, _ = find_peaks(hist, height=150)
         if len(peaks) > 0:
             if collecting_room_temps:
-                if np.std(room_temp_array) >0.1:
+                if np.std(room_temp_array) >0.50:
                     room_temp_array = room_temp_array[1:]
             room_temp = np.amax(bin_edges[peaks]) + bin_width / 2
             print("Room Temp: {0:.1f} - alpha: {1:.4f} - len() - {2}".format(np.average(room_temp), np.std(room_temp_array), len(room_temp_array)))
@@ -65,7 +65,7 @@ while True:
         peaks, _ = find_peaks(hist, height=150)
         if len(peaks) > 0:
             if collecting_body_temps:
-               if np.std(body_temp_array) > 1.0:
+               if np.std(body_temp_array) > 0.50:
                     body_temp_array = body_temp_array[1:]
             human_temp = np.amax(bin_edges[peaks]) + bin_width / 2
             body_temp_array.append(human_temp)
