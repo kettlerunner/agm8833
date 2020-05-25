@@ -51,7 +51,7 @@ while True:
         bin_width = bin_edges[0] - bin_edges[1]
         peaks, _ = find_peaks(hist, height=150)
         if len(peaks) > 0:
-            if np.std(room_temp_array) >0.50 or len(room_temp_array) > 64:
+            if np.std(room_temp_array) >0.50 or len(room_temp_array) >= 64:
                 room_temp_array = room_temp_array[1:]
             room_temp = np.amax(bin_edges[peaks]) + bin_width / 2
             room_temp_array.append(room_temp)
