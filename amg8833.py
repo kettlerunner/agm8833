@@ -19,6 +19,7 @@ body_temp_array = []
 room_temp_array = []
 body_temp = 98.6
 room_temp = 65.0
+peak_height_body = 80
 i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
 cap = cv2.VideoCapture(0)
@@ -99,7 +100,14 @@ while True:
                 face_in_frame = False
             hist, bin_edges = np.histogram(room_flat_grid, bins=256)
             bin_width = bin_edges[0] - bin_edges[1]
-            peaks, _ = find_peaks(hist, height=150)
+            peaks, _ = find_peaks(hist, height=peak_height_body)
+            while len(peaks) != 1:
+                if len(peaks) > 1:
+                    peak_height_body = peak_height_body + 1
+                if len(peaks) == 0:
+                    peak_height_body = peak_height_body - 1
+                peaks, _ = find_peaks(hist, height=peak_height_body)
+                print(peaks, _ = find_peaks(hist, height=peak_height_body))
             if len(peaks) > 0:
                 if np.std(room_temp_array) >0.50 or len(room_temp_array) >= 64:
                     room_temp_array = room_temp_array[1:]
