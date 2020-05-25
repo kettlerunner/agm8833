@@ -82,7 +82,14 @@ while True:
             if len(human_flat_grid) > 0:
                 hist, bin_edges = np.histogram(human_flat_grid, bins=256)
                 bin_width = bin_edges[0] - bin_edges[1]
-                peaks, _ = find_peaks(hist, height=100)
+                peaks, _ = find_peaks(hist, height=peak_height_body)
+                while len(peaks) != 1:
+                    if len(peaks) > 1:
+                        peak_height_body = peak_height_body + 1
+                    if len(peaks) == 0:
+                        peak_height_body = peak_height_body - 1
+                    peaks, _ = find_peaks(hist, height=peak_height_body)
+                    print(peaks, _ = find_peaks(hist, height=peak_height_body))
                 if len(peaks) > 0:
                     if collecting_body_temps:
                        if np.std(body_temp_array) > 0.50:
@@ -100,14 +107,8 @@ while True:
                 face_in_frame = False
             hist, bin_edges = np.histogram(room_flat_grid, bins=256)
             bin_width = bin_edges[0] - bin_edges[1]
-            peaks, _ = find_peaks(hist, height=peak_height_body)
-            while len(peaks) != 1:
-                if len(peaks) > 1:
-                    peak_height_body = peak_height_body + 1
-                if len(peaks) == 0:
-                    peak_height_body = peak_height_body - 1
-                peaks, _ = find_peaks(hist, height=peak_height_body)
-                print(peaks, _ = find_peaks(hist, height=peak_height_body))
+            peaks, _ = find_peaks(hist, height=80)
+            
             if len(peaks) > 0:
                 if np.std(room_temp_array) >0.50 or len(room_temp_array) >= 64:
                     room_temp_array = room_temp_array[1:]
