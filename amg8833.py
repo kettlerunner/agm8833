@@ -84,8 +84,8 @@ while True:
                 bin_width = bin_edges[0] - bin_edges[1]
                 peaks, _ = find_peaks(hist, height=peak_height_body)
                 x = []
-                while len(peaks) != 1:
-                    
+                y = False
+                while len(peaks) != 1 or not y:
                     if len(peaks) > 1:
                         peak_height_body = peak_height_body + 1
                     if len(peaks) == 0:
@@ -94,6 +94,10 @@ while True:
                     if len(x) > 10:
                         x = x[1:]
                     x.append(peak_height_body)
+                    if np.std(x) < 0.5:
+                        y = True
+                        peak_height_body = min(x.min)
+                        print("breaking loop")
                     print(peak_height_body, np.std(x))
                 if len(peaks) > 0:
                     if collecting_body_temps:
