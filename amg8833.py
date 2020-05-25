@@ -83,6 +83,7 @@ while True:
                 hist, bin_edges = np.histogram(human_flat_grid, bins=128)
                 bin_width = bin_edges[0] - bin_edges[1]
                 peaks, _ = find_peaks(hist, height=peak_height_body)
+                #This sub process stabalizes our search for peaks. 
                 x = []
                 y = False
                 while len(peaks) != 1 and not y:
@@ -97,8 +98,6 @@ while True:
                     if np.std(x) < 0.65:
                         y = True
                         peak_height_body = min(x)
-                        print("breaking loop")
-                    print(peak_height_body, np.std(x))
                 if len(peaks) > 0:
                     if collecting_body_temps:
                        if np.std(body_temp_array) > 0.50:
