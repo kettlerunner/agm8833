@@ -82,9 +82,14 @@ while True:
             if len(human_flat_grid) > 0:
                 hist, bin_edges = np.histogram(human_flat_grid, bins=128)
                 bin_width = bin_edges[0] - bin_edges[1]
-                peaks, _ = find_peaks(hist, height=43)
-                while len(peaks) != 1:
+                peaks, _ = find_peaks(hist, height=peak_height_body)
+                x, y = peak_height_body
+                z = 0
+                while len(peaks) != 1 of x == z:
                     if len(peaks) > 1:
+                        z = y
+                        y = x
+                        x = peak_height_body
                         peak_height_body = peak_height_body + 1
                     if len(peaks) == 0:
                         peak_height_body = peak_height_body - 1
