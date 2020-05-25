@@ -88,7 +88,7 @@ while True:
                         peak_height_body = peak_height_body + 1
                     if len(peaks) == 0:
                         peak_height_body = peak_height_body - 1
-                    peaks, _ = find_peaks(hist, height=peak_height_body)
+                    peaks, _ = find_peaks(hist, height=43)
                     print(peak_height_body)
                 if len(peaks) > 0:
                     if collecting_body_temps:
