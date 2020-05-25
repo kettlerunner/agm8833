@@ -25,7 +25,7 @@ cap = cv2.VideoCapture(0)
 face_cascade = cv2.CascadeClassifier('/home/pi/Scripts/therm/haarcascade_frontalface_default.xml')
 
 points = [(math.floor(ix / 8), (ix % 8)) for ix in range(0,64)]
-grid_x, grid_y = np.mgrid[0:7:256j, 0:7:256j]
+grid_x, grid_y = np.mgrid[0:7:128j, 0:7:128j]
 
 def draw_label(img, text, pos, bg_color):
     font_face = cv2.FONT_HERSHEY_SIMPLEX
