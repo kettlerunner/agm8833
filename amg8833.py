@@ -25,7 +25,7 @@ while True:
     pixels_f = (9/5)*pixels+32
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
     ax.clear()
-    surf = ax2.plot_surface(grid_x, grid_y, grid_0, cmap="jet", linewidth=0, antialiased=False)
+    surf = ax.plot_surface(grid_x, grid_y, grid_0, cmap="jet", linewidth=0, antialiased=False)
     ax.view_init(75, angle)
     fig.canvas.draw()
 
