@@ -40,5 +40,6 @@ while True:
     angle += 10
     if angle >360: angle = 0
     ax2.view_init(30, angle)
+    fig.canvas.draw()
 
 plt.show()
