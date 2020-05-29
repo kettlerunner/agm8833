@@ -14,7 +14,6 @@ plt.ion()
 i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
 fig = plt.figure(num='AMG8833 Thermal Scanner');
-fig = plt.figure()
 
 ax = fig.add_subplot(121)
 ax.set_yticklabels([])
