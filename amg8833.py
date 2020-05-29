@@ -34,7 +34,7 @@ while True:
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
     im.set_data(grid_0)
     ax2.clear()
-    surf = ax2.plot_surface(grid_x, grid_y, grid_0, rstride=6, cstride=6, cmap=plt.jet,
+    surf = ax2.plot_surface(grid_x, grid_y, grid_0, rstride=6, cstride=6, cmap=cm.jet,
             linewidth=0)
     #hist = ax2.hist(grid_0, bins = 2)
     #hist.set_data(grid_0)
