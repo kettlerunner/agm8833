@@ -30,9 +30,9 @@ while True:
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax((9/5)*np.amax(amg.pixels)+32)))
     pixels = np.fliplr(np.rot90(np.asarray(amg.pixels), k=3)).flatten()
     pixels_f = (9/5)*pixels+32
-    ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax(pixels_f )))
+    #ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax(pixels_f )))
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
-    im.set_data(grid_0)
+    #im.set_data(grid_0)
     ax2.clear()
     surf = ax2.plot_surface(grid_x, grid_y, grid_0, cmap="jet", linewidth=0, antialiased=False)
     #hist = ax2.hist(grid_0, bins = 2)
