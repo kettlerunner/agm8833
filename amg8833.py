@@ -37,6 +37,10 @@ while True:
     surf = ax2.plot_surface(grid_x, grid_y, grid_0, cmap="jet", linewidth=0, antialiased=False)
     #hist = ax2.hist(grid_0, bins = 2)
     #hist.set_data(grid_0)
-    fig.canvas.draw()
+    
+    for angle in range(0, 360):
+        ax2.view_init(30, angle)
+        fig.canvas.draw()
+        plt.pause(.001)
 
 plt.show()
