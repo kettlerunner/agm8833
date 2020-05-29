@@ -37,7 +37,7 @@ while True:
     surf = ax2.plot_surface(grid_x, grid_y, grid_0, cmap="jet", linewidth=0, antialiased=False)
     #hist = ax2.hist(grid_0, bins = 2)
     #hist.set_data(grid_0)
-    ax2.view_init(30, angle)
+    ax2.view_init(60, angle)
     fig.canvas.draw()
 
 plt.show()
