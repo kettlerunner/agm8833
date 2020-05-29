@@ -23,7 +23,7 @@ fig.colorbar(im, ax=ax)
 points = [(math.floor(ix / 8), (ix % 8)) for ix in range(0,64)]
 grid_x, grid_y = np.mgrid[0:7:256j, 0:7:256j]
 
-ax2 = fig.add_subplot(122, projection='3d')
+ax2 = fig.add_subplot(122)
 
 while True:
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax((9/5)*np.amax(amg.pixels)+32)))
