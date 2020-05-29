@@ -36,3 +36,20 @@ while True:
     hist = ax2.hist(grid_0, bins = 2)
     #hist.set_data(grid_0)
     fig.canvas.draw()
+    
+    ax = fig.add_subplot(111, projection='3d')
+    xi = np.linspace(0, 256)
+    yi = np.linspace(0, 256)
+    X, Y = np.meshgrid(xi, yi)
+    Z = griddata(x, y, z, xi, yi)
+    surf = ax.plot_surface(X, Y, Z, rstride=6, cstride=6, cmap=cm.jet,
+            linewidth=0)
+
+ax.set_zlim3d(min(z), max(z))
+
+ax.w_zaxis.set_major_locator(LinearLocator(10))
+ax.w_zaxis.set_major_formatter(FormatStrFormatter('%.03f'))
+
+fig.colorbar(surf, shrink=0.5, aspect=5)
+
+plt.show()
