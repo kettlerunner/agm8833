@@ -12,9 +12,6 @@ from scipy.signal import find_peaks
 vmax = 80
 vmin = 63
 plt.ion()
-collecting_body_temps = False
-body_temp_array = []
-body_temp = 98.6
 i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
 fig = plt.figure(num='AMG8833 Thermal Scanner');
@@ -47,24 +44,14 @@ while True:
     if len(room_flat_grid) > 0:
         hist, bin_edges = np.histogram(room_flat_grid, bins=256)
         bin_width = bin_edges[0] - bin_edges[1]
-        peaks, _ = find_peaks(hist, height=500)
-        if len(peaks) > 0:
-            room_temp = np.amax(bin_edges[peaks]) + bin_width / 2
-            print("Room Temp: {0:.4f}".format(room_temp))
+        peaks, _ = find_peaks(hist, height=150)
+        room_temp = np.amax(bin_edges[peaks]) + bin_width / 2
+        print("Room Temp: {0:.4f}".format(room_temp))
         
     if len(human_flat_grid) > 0:
-        hist, bin_edges = np.histogram(human_flat_grid, bins=256)
+        hist, bin_edges = np.histogram(flat_grid, bins=256)
         bin_width = bin_edges[0] - bin_edges[1]
-        peaks, _ = find_peaks(hist, height=150)
-        if len(peaks) > 0:
-            if collecting_body_temps:
-               if np.std(body_temp_array) > 0.1:
-                    body_temp_array = body_temp_array[1:0]
-            human_temp = np.amax(bin_edges[peaks]) + bin_width / 2
-            body_temp_array.append(human_temp)
-            collecting_body_temps = True
-            print("Human Temp: {0:.1f} - alpha: {1:.4f} - len() - {2}".format(np.average(human_temp), np.std(body_temp_array), len(body_temp_array)))
-    else:
-        collecting_body_temps = False
-        body_temp_array = []
+        peaks, _ = find_peaks(hist, height=400)
+        human_temp = np.amax(bin_edges[peaks]) + bin_width / 2
+        print("Human Temp: {0:.4f}".format(human_temp))
     fig.canvas.draw()
