@@ -20,6 +20,10 @@ points = [(math.floor(ix / 8), (ix % 8)) for ix in range(0,64)]
 grid_x, grid_y = np.mgrid[0:7:512j, 0:7:512j]
 
 ax = fig.add_subplot(111, projection='3d')
+import seaborn as sns
+ax.axes.get_xaxis().set_visible(False)
+ax.axes.get_yaxis().set_visible(False)
+
 angle = 0
 while True:
     pixels = np.fliplr(np.rot90(np.asarray(amg.pixels), k=3)).flatten()
