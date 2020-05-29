@@ -24,6 +24,7 @@ while True:
     pixels = np.fliplr(np.rot90(np.asarray(amg.pixels), k=3)).flatten()
     pixels_f = (9/5)*pixels+32
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
+    print(grid_0.shape)
     ax.clear()
     surf = ax.plot_surface(grid_x, grid_y, grid_0, cmap="jet", linewidth=0, antialiased=False)
     #surf = ax.plot_trisurf(grid_x, grid_y, grid_0, cmap="jet", linewidth=0, antialiased=False)
