@@ -41,6 +41,5 @@ while True:
     for angle in range(0, 360):
         ax2.view_init(30, angle)
         fig.canvas.draw()
-        plt.pause(.001)
 
 plt.show()
