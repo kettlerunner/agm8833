@@ -14,10 +14,7 @@ vmin = 63
 plt.ion()
 collecting_body_temps = False
 body_temp_array = []
-room_temp_array = []
-collecting_room_temps = False
 body_temp = 98.6
-room_temp = 65.0
 i2c = busio.I2C(board.SCL, board.SDA)
 amg = adafruit_amg88xx.AMG88XX(i2c)
 fig = plt.figure(num='AMG8833 Thermal Scanner');
@@ -38,8 +35,8 @@ while True:
     pixels_f = (9/5)*pixels+32
     ax.set_title("Max Temp Found: {0:.1f}F".format(np.amax(pixels_f )))
     grid_0 = griddata(points, pixels_f, (grid_x, grid_y), method='cubic')
-    #im.set_data(grid_0)
-    #ax2.clear()
+    im.set_data(grid_0)
+    ax2.clear()
     flat_grid = grid_0.flatten()
     hist, bin_edges = np.histogram(flat_grid, bins=256)
     bar = ax2.bar(bin_edges[:-1], hist, width = 0.1, color='#0504aa',alpha=0.7)
@@ -50,14 +47,10 @@ while True:
     if len(room_flat_grid) > 0:
         hist, bin_edges = np.histogram(room_flat_grid, bins=256)
         bin_width = bin_edges[0] - bin_edges[1]
-        peaks, _ = find_peaks(hist, height=150)
+        peaks, _ = find_peaks(hist, height=500)
         if len(peaks) > 0:
-            if collecting_room_temps:
-                if np.std(room_temp_array) >0.50 or len(room_temp_array) > 64:
-                    room_temp_array = room_temp_array[1:]
             room_temp = np.amax(bin_edges[peaks]) + bin_width / 2
-            room_temp_array.append(room_temp)
-            print("Room Temp: {0:.1f} - alpha: {1:.4f} - len() - {2}".format(np.average(room_temp_array), np.std(room_temp_array), len(room_temp_array)))
+            print("Room Temp: {0:.4f}".format(room_temp))
         
     if len(human_flat_grid) > 0:
         hist, bin_edges = np.histogram(human_flat_grid, bins=256)
@@ -65,14 +58,13 @@ while True:
         peaks, _ = find_peaks(hist, height=150)
         if len(peaks) > 0:
             if collecting_body_temps:
-               if np.std(body_temp_array) > 0.50:
-                    body_temp_array = body_temp_array[1:]
+               if np.std(body_temp_array) > 0.1:
+                    body_temp_array = body_temp_array[1:0]
             human_temp = np.amax(bin_edges[peaks]) + bin_width / 2
             body_temp_array.append(human_temp)
             collecting_body_temps = True
-            print("Human Temp: {0:.1f} - alpha: {1:.4f} - len() - {2}".format(np.average(body_temp_array), np.std(body_temp_array), len(body_temp_array)))
-        else:
-            collecting_body_temps = False
-            body_temp_array = []
-    
+            print("Human Temp: {0:.1f} - alpha: {1:.4f} - len() - {2}".format(np.average(human_temp), np.std(body_temp_array), len(body_temp_array)))
+     else:
+        collecting_body_temps = False
+        body_temp_array = []
     fig.canvas.draw()
