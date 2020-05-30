@@ -38,3 +38,5 @@ while True:
     #    print("Body temp found: {}".format(temp))
     
     print(room_temp, temp, std, count)
+    
+    
