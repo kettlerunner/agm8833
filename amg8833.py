@@ -42,8 +42,10 @@ while True:
     filtered_flat_grid = flat_grid[flat_grid > 0]
     hist, bins = np.histogram(filtered_flat_grid, bins=16)
     #temp_hist = ax1.hist(bins[:-1], bins, weights=hist)
-    
-    print(np.average(bins[:-1], weights = hist), np.std(filtered_flat_grid))        
+    temp = "{:.2f}".format(np.average(bins[:-1], weights = hist))
+    std = "{:.2f}".format(np.std(filtered_flat_grid))
+    count = "{}".format(np.sum(filtered_flat_grid))
+    print(temp, std, count)        
      
     #fig.tight_layout()
     #fig.canvas.draw()
