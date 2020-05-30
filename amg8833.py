@@ -45,7 +45,7 @@ while True:
     temp = "{:.2f}".format(np.average(bins[:-1], weights = hist))
     std = "{:.2f}".format(np.std(filtered_flat_grid))
     count = "{:,.0f}".format(np.sum(filtered_flat_grid))
-    if np.std(filtered_flat_grid) >= 0.5 and np.sum(filtered_flat_grid) >= 300000:
+    if np.std(filtered_flat_grid) >= 0.75 and np.sum(filtered_flat_grid) >= 300000:
         print("Body temp found: {}".format(temp))
     print(temp, std, count)        
      
