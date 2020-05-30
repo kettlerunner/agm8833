@@ -44,7 +44,7 @@ while True:
     #temp_hist = ax1.hist(bins[:-1], bins, weights=hist)
     temp = "{:.2f}".format(np.average(bins[:-1], weights = hist))
     std = "{:.2f}".format(np.std(filtered_flat_grid))
-    count = "{}".format(np.sum(filtered_flat_grid))
+    count = "{:,.0f}".format(np.sum(filtered_flat_grid))
     print(temp, std, count)        
      
     #fig.tight_layout()
