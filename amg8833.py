@@ -37,7 +37,6 @@ while True:
     grid_z[grid_z < bin_edges[len(bin_edges) - 2]] = 0
     ax1.clear()
     hist = ax1.hist(grid_z.flatten())
-    ax1.set_axis_off()
     
     fig.tight_layout()
     fig.canvas.draw()
