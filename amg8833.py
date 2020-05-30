@@ -38,11 +38,10 @@ while True:
     hist, bin_edges = np.histogram(flat_grid, bins=16)
     grid_z[grid_z < bin_edges[len(bin_edges) - 4]] = 0
     ax1.clear()
-    flat_grid = grid_z.flatten()
-    filtered_flat_grid = flat_grid[flat_grid > 0]
-    hist, bins = np.histogram(filtered_flat_grid, bins=16)
-    face_grid_z = grid_z[grid_z > bins[14]]
-    temp_surf = ax1.plot_surface(grid_x, grid_y, face_grid_z, cmap="jet", linewidth=0, antialiased=False)
+    #flat_grid = grid_z.flatten()
+    #filtered_flat_grid = flat_grid[flat_grid > 0]
+    #hist, bins = np.histogram(filtered_flat_grid, bins=16)
+    temp_surf = ax1.plot_surface(grid_x, grid_y, grid_z, cmap="jet", linewidth=0, antialiased=False)
     ax1.set_axis_off()
     #temp_hist = ax1.hist(bins[:-1], bins, weights=hist)
     
