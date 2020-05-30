@@ -41,7 +41,10 @@ while True:
     flat_grid = grid_z.flatten()
     filtered_flat_grid = flat_grid[flat_grid > 0]
     hist, bins = np.histogram(filtered_flat_grid, bins=16)
-    temp_hist = ax1.hist(bins[:-1], bins, weights=hist)
+    face_grid_z = grid_z[grid_z > bins[14]]
+    temp_surf = ax1.plot_surface(grid_x, grid_y, face_grid_z, cmap="jet", linewidth=0, antialiased=False)
+    ax1.set_axis_off()
+    #temp_hist = ax1.hist(bins[:-1], bins, weights=hist)
     
     print(np. average(bins[:-1], weights = hist))        
      
