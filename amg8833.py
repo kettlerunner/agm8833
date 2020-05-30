@@ -41,6 +41,8 @@ while True:
     hist, bins = np.histogram(filtered_flat_grid, bins=16)
     temp_hist = ax1.hist(bins[:-1], bins, weights=hist)
     
+    print(np. average(bins, weights = hist))        
+    
     fig.tight_layout()
     fig.canvas.draw()
 
