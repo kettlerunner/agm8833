@@ -39,7 +39,7 @@ while True:
     flat_grid = grid_z.flatten()
     filtered_flat_grid = flat_grid[flat_grid > 0]
     hist, bin_edges = np.histogram(filtered_flat_grid, bins=16)
-    temp_hist = ax1.hist(grid_z.flatten())
+    temp_hist = ax1.hist(bins[:-1], bins, weights=hist)
     
     fig.tight_layout()
     fig.canvas.draw()
