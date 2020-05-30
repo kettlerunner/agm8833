@@ -21,8 +21,7 @@ grid_x, grid_y = np.mgrid[0:7:512j, 0:7:512j]
 ax = fig.add_subplot(121, projection='3d')
 ax.set_axis_off()
 angle = 0
-ax1 = fig.add_subplot(122, projection='3d')
-ax1.set_axis_off()
+ax1 = fig.add_subplot(122)
 angle = 0
 while True:
     pixels = np.fliplr(np.rot90(np.asarray(amg.pixels), k=3)).flatten()
