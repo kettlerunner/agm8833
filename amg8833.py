@@ -33,8 +33,9 @@ while True:
     ax.set_axis_off()
     
     flat_grid = grid_z.flatten()
+    flat_grid = flat_grid[flat_grid >=65 & flat_grid <=95]
     hist, bin_edges = np.histogram(flat_grid, bins=16)
-    grid_z[grid_z < bin_edges[len(bin_edges) - 2]] = 0
+    grid_z[grid_z < bin_edges[len(bin_edges) - 4]] = 0
     ax1.clear()
     flat_grid = grid_z.flatten()
     filtered_flat_grid = flat_grid[flat_grid > 0]
