@@ -37,8 +37,7 @@ while True:
     hist, bin_edges = np.histogram(flat_grid, bins=16)
     grid_z[grid_z < bin_edges[len(bin_edges) - 2]] = 0
     ax1.clear()
-    surf1 = ax1.plot_surface(grid_x, grid_y, grid_z, cmap="jet", linewidth=0, antialiased=False)
-    ax1.view_init(80, angle)
+    hist = ax1.hist(grid_z.flatten())
     ax1.set_axis_off()
     
     fig.tight_layout()
