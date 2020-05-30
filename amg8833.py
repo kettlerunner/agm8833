@@ -45,7 +45,7 @@ while True:
     ax1.set_axis_off()
     #temp_hist = ax1.hist(bins[:-1], bins, weights=hist)
     
-    print(np. average(bins[:-1], weights = hist))        
+    #print(np. average(bins[:-1], weights = hist))        
      
     fig.tight_layout()
     fig.canvas.draw()
