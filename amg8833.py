@@ -47,7 +47,7 @@ while True:
     count = "{:,.0f}".format(np.sum(filtered_flat_grid))
     if np.std(filtered_flat_grid) >= 0.5 and np.sum(filtered_flat_grid) >= 300000:
         print("Body temp found: {}".format(temp))
-    #print(temp, std, count)        
+    print(temp, std, count)        
      
     #fig.tight_layout()
     #fig.canvas.draw()
